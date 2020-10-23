@@ -34,7 +34,7 @@ func GetSpanContextAndLinks(ctx context.Context, ignoreContext bool) (trace.Span
 	if lsctx.IsValid() {
 		return lsctx, false, nil
 	}
-	if rsctx.IsValid() {
+	if rsctx.HasTraceID() {
 		return rsctx, true, nil
 	}
 	return trace.EmptySpanContext(), false, nil
